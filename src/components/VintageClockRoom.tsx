@@ -103,10 +103,10 @@ export default function VintageClockRoom() {
                 
                 {/* Roman numerals */}
                 {numerals.map((num, i) => {
-                  const angle = (i * 30 - 60) * (Math.PI / 180);
+                  const angle = (i * 30) * (Math.PI / 180) - Math.PI / 2;
                   const radius = 0.43;
-                  const x = 50 + radius * 100 * Math.sin(angle);
-                  const y = 50 - radius * 100 * Math.cos(angle);
+                  const x = 50 + radius * 100 * Math.cos(angle);
+                  const y = 50 + radius * 100 * Math.sin(angle);
                   return (
                     <div
                       key={i}
@@ -180,7 +180,7 @@ export default function VintageClockRoom() {
                 {/* digital */}
                 <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 text-center">
                   <div className="text-sm md:text-lg lg:text-xl font-bold text-amber-900 font-mono select-none">
-                    {String((hours % 12) || 12).padStart(2, "0")}:
+                    {String(((hours % 12) || 12)).padStart(2, "0")}:
                     {String(minutes).padStart(2, "0")}:
                     {String(seconds).padStart(2, "0")}
                   </div>
